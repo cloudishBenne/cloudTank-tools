@@ -29,7 +29,6 @@ cursed_curl "https://media.forgecdn.net/files/3236/10/BiomesOPlenty-1.16.4-13.0.
 cursed_curl "https://media.forgecdn.net/files/3288/486/minecolonies-0.14.118-BETA-universal.jar" "minecolonies.jar"
 cursed_curl "https://media.forgecdn.net/files/3280/126/structurize-0.13.166-ALPHA-universal.jar" "structurize.jar"
 cursed_curl "https://media.forgecdn.net/files/3245/79/jei-1.16.5-7.6.1.75.jar" "jei-1.16.5-7.6.1.75.jar"
-cursed_curl "https://optifine.net/downloadx?f=preview_OptiFine_1.16.5_HD_U_G8_pre11.jar&x=e549429727bca13d0e36e51242e5bd58" "optifine.jar"
 echo "\n ... done"
 
 echo "Installing new Forge ..."
@@ -38,3 +37,19 @@ rm forge*.jar
 cursed_curl "https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.1.0/forge-1.16.5-36.1.0-installer.jar" "forge-installer.jar"
 java -jar forge-installer.jar
 echo "... done"
+
+echo ""
+echo "Now you have to download optifine. I will open the downloadpage for you..."
+echo "Click [+Preview versions] and download"
+echo ""
+firefox https://optifine.net/downloads 2>&1 1>/dev/null &
+
+echo "Waiting for downloaded file ..."
+while [ ! -f $HOME/Downloads/*OptiFine*.jar ]
+do
+    sleep 5
+done
+echo "Found file! Thanks for your help!"
+cp $(find $HOME/Downloads -name '*OptiFine*.jar' -ls | cut -d' ' -f17) $HOME/.minecraft/mods/optifine.jar
+
+echo "Done! You can start to play now, enjoy!"
