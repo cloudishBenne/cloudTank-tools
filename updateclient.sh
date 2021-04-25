@@ -50,6 +50,6 @@ do
     sleep 5
 done
 echo "Found file! Thanks for your help!"
-cp $(find $HOME/Downloads -name '*OptiFine*.jar' -ls | cut -d' ' -f17) $HOME/.minecraft/mods/optifine.jar
+cp $(find $HOME/Downloads -name '*OptiFine*.jar') $HOME/.minecraft/mods/optifine.jar
 
 echo "Done! You can start to play now, enjoy!"
