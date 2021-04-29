@@ -1,3 +1,7 @@
 Package: *
+Pin: release v=20.10,o=LP-PPA-oibaf-graphics-drivers,a=groovy,n=groovy,l=Updated Open Graphics Drivers - since 2011!,c=main,b=i386
+Pin-Priority: 1002
+
+Package: *
 Pin: release v=20.10,o=LP-PPA-oibaf-graphics-drivers,a=groovy,n=groovy,l=Updated Open Graphics Drivers - since 2011!,c=main,b=amd64
 Pin-Priority: 1002
