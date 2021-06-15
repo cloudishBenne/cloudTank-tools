@@ -2,9 +2,9 @@
 Get the code:
 ```
  $ git clone https://github.com/cloudishBenne/cloudTank-tools.git
+ $ cd cloudTank-tools
  or go to your folder were you cloned the code and run
  $ git pull
- $ cd cloudTank-tools
 ```
 Now you can execute the scripts below.
 
