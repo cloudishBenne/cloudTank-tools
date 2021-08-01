@@ -24,26 +24,14 @@ sudo apt-get -y install default-jre \
 echo "  ... done"
 echo ""
 
-echo "########################################################################################"
-echo "Now you have to download the minecraft-launcher. I will open the downloadpage for you..."
-echo "Click [DEBIAN] and download"
+echo "> downloading minecraft launcher"
 echo ""
-firefox https://minecraft.net/download >/dev/null 2>&1 &
+curl 'https://launcher.mojang.com/download/Minecraft.deb' \
+	--compressed --output $HOME/Downloads/Minecraft.deb
 
-echo "> Waiting for downloaded file ..."
-while [ ! -f $HOME/Downloads/Minecraft.deb ]
-do
-    sleep 5
-done
-echo "  ... done"
-echo "Found file! Thanks for your help!"
-echo "########################################################################################"
-echo ""
-
-mv $HOME/Downloads/Minecraft.deb /tmp/Minecraft.deb
-sudo dpkg -i /tmp/Minecraft.deb >/dev/null 2>&1
-sudo rm /tmp/Minecraft.deb
 echo "> installing minecraft ..."
+sudo dpkg -i /tmp/Minecraft.deb >/dev/null 2>&1
+rm $HOME/Downloads/Minecraft.deb
 minecraft-launcher >/dev/null 2>&1
 echo "  ... done"
 
