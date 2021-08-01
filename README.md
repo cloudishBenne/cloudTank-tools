@@ -1,21 +1,25 @@
 # cloudTank-tools
 Get the code:
 ```
+ $ mkdir -p ~/codes/cloudTank && cd ~/codes/cloudTank
  $ git clone https://github.com/cloudishBenne/cloudTank-tools.git
- $ cd cloudTank-tools
- or go to your folder were you cloned the code and run
- $ git pull
 ```
 Now you can execute the scripts below.
 
+## minecraft.sh:
+```
+ $ cd ~/codes/cloudTank/cloudTank-tools
+ $ ./minecraft.sh
+```
+... this also executes updateclient.sh
+
 ## updateclient.sh:
 ```
- $ chmod +x updateclient.sh
+ $ cd ~/codes/cloudTank/cloudTank-tools
  $ ./updateclient.sh
 ```
 
-## setup_pop-os_oibaf-graphics.sh
+## Warning, experimental drivers: setup_pop-os_oibaf-graphics.sh
 ```
- $ chmod +x setup_pop-os_oibaf-graphics.sh
  $ ./setup_pop-os_oibaf-graphics.sh
 ```
