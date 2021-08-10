@@ -8,6 +8,9 @@ DIR_STEAM_COMPAT=$HOME/.steam/root/compatibilitytools.d/
 if [ -d $DIR_PROTONUP ]; then
 	cd $DIR_PROTONUP && \
 		git pull && \
+		python3 setup.py install --user && \
+                source ~/.profile && \
+                protonup -d "$DIR_STEAM_COMPAT" && \
 		protonup
 else
 	sudo apt install python3-setuptools 
@@ -22,3 +25,4 @@ else
 			protonup && \
 			sudo cp $DIR_CLOUDTANK/cloudTank-tools/80cloudTank /etc/apt/apt.conf.d/80cloudTank
 fi
+
