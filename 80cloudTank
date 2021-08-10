@@ -1,0 +1,2 @@
+APT::Update::Post-Invoke {"echo && echo && echo 'cloudTank > Updating protonup' && git -C /home/build/codes/cloudTank/protonup/ pull && echo && echo"; };
+DPkg::Pre-Invoke {"echo && echo && echo 'cloudTank > Updating proton' && sudo -i -u build protonup && echo && echo";};
