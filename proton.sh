@@ -1,10 +1,11 @@
 #!/bin/bash
 
-cd $HOME/codes/cloudtank/cloudTank-tools
+sudo apt install python3-setuptools 
 
-git clone https://github.com/AUNaseef/protonup && cd protonup
-python3 setup.py install --user
-
-protonup -d "~/.steam/root/compatibilitytools.d/"
-
+cd $HOME/codes/cloudTank && \
+	git clone https://github.com/AUNaseef/protonup && \
+	cd protonup && \
+		python3 setup.py install --user && \
+source ~/.profile && \
+protonup -d "~/.steam/root/compatibilitytools.d/" && \
 protonup
