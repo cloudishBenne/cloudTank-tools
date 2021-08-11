@@ -21,6 +21,7 @@ Now you can execute the scripts below.
 
 ## proton.sh:
 ```
+ $ cd ~/codes/cloudTank/cloudTank-tools
  $ sudo apt update
  $ ./proton.sh
  $ sudo apt update
