@@ -10,8 +10,7 @@ if [ -d $DIR_PROTONUP ]; then
 		git pull && \
 		python3 setup.py install --user && \
                 source ~/.profile && \
-                protonup -d "$DIR_STEAM_COMPAT" && \
-		protonup
+                protonup -d "$DIR_STEAM_COMPAT"
 else
 	sudo apt install python3-setuptools 
 	
@@ -21,8 +20,9 @@ else
 			git config pull.rebase true && \
 			python3 setup.py install --user && \
 			source ~/.profile && \
-			protonup -d "$DIR_STEAM_COMPAT" && \
-			protonup && \
-			sudo cp $DIR_CLOUDTANK/cloudTank-tools/80cloudTank /etc/apt/apt.conf.d/80cloudTank
+			protonup -d "$DIR_STEAM_COMPAT"
+			cp $DIR_CLOUDTANK/cloudTank-tools/apt/80cloudTank $DIR_CLOUDTANK/cloudTank-tools/apt/80tmp
+			sed -i "s|USERSHOME|$HOME|g" $DIR_CLOUDTANK/cloudTank-tools/apt/80tmp
+			sudo cp $DIR_CLOUDTANK/cloudTank-tools/apt/80tmp /etc/apt/apt.conf.d/80cloudTank
 fi
 

@@ -1,1 +1,0 @@
-APT::Update::Post-Invoke {"echo && echo && echo 'cloudTank > updating proton' && sudo -i -u $SUDO_USER /home/$SUDO_USER/.local/bin/protonup && echo && echo"; };
