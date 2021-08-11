@@ -21,15 +21,15 @@ function cloudTank-updater {
         	echo -e "${h1}cloudTank >>  updating proton${end}"
 		echo
 		echo -e "${h2}Installed versions:${text}"
-        	sudo -u benne /home/benne/.local/bin/protonup -l
+        	sudo -u USER USERSHOME/.local/bin/protonup -l
 		echo
 		echo -e "${h2}Updating:${text}"
-        	sudo -u benne /home/benne/.local/bin/protonup
+        	sudo -u USER USERSHOME/.local/bin/protonup
         	echo
 		echo -e $end
         	echo
         else # Script is getting input from pipe or file - non-interactive
-        	sudo -u benne /home/benne/.local/bin/protonup -y
+        	sudo -u USER USERSHOME/.local/bin/protonup -y
         fi
 }
 

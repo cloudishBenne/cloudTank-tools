@@ -1,4 +1,0 @@
-APT::Update::Post-Invoke { 
-	"/home/benne/codes/cloudTank/cloudTank-tools/apt/cloudTank_apt-update-post-hook.sh"
-};
-DPKg::Options:: "--post-invoke=/home/benne/codes/cloudTank/cloudTank-tools/apt/cloudTank_apt-upgrade-post-hook.sh";
