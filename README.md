@@ -4,6 +4,12 @@ Get the code:
  $ mkdir -p ~/codes/cloudTank && cd ~/codes/cloudTank
  $ git clone https://github.com/cloudishBenne/cloudTank-tools.git
 ```
+
+Or just pull the new code in:
+```
+ $ cd ~/codes/cloudTank/cloudTank-tools
+ $ git pull
+```
 Now you can execute the scripts below.
 
 ## minecraft.sh:
