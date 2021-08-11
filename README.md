@@ -19,6 +19,14 @@ Now you can execute the scripts below.
  $ ./updateclient.sh
 ```
 
+## proton.sh:
+```
+ $ sudo apt update
+ $ ./proton.sh
+ $ sudo apt update
+```
+... now proton gets updated with "sudo apt update"
+
 ## Warning, experimental drivers: setup_pop-os_oibaf-graphics.sh
 ```
  $ ./setup_pop-os_oibaf-graphics.sh
