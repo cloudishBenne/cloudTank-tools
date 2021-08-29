@@ -66,12 +66,12 @@ echo -e "${h2}Downloading Forge ...${text}"
 echo
 cd $HOME/.minecraft
 rm forge*.jar
-curl -O https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.1.0/forge-1.16.5-36.1.0-installer.jar
+curl -O https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.2.0/forge-1.16.5-36.2.0-installer.jar
 
 echo
 echo -e "${h2}Updating Forge ...${text}"
 echo
-java -jar forge-1.16.5-36.1.0-installer.jar > /dev/null
+java -jar forge-1.16.5-36.2.0-installer.jar > /dev/null
 echo -e $end
 
 echo
