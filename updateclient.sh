@@ -1,55 +1,78 @@
 #!/usr/bin/env bash
 
-echo "Cleaning up mods folder ..."
-mkdir -p $HOME/.minecraft/mods
-cd $HOME/.minecraft/mods
-rm -rf *
-echo "... done"
 
-function cursed_curl () {
-	curl $1 -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:87.0) Gecko/20100101 Firefox/87.0' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Accept-Language: en-US,en;q=0.5' --compressed -H 'DNT: 1' -H 'Connection: keep-alive' -H 'Upgrade-Insecure-Requests: 1' -H 'Sec-GPC: 1' -H 'TE: Trailers' --output $2
+h1="\033[0;1;4;93m"
+h2="\033[0;1;93m"
+text="\033[0;33m"
+end="\033[0m"
+
+function download () {
+	DOWNLOAD+=-O" "$1" "
 }
 
-echo "\n Downloading new mods ..."
-cursed_curl "https://media.forgecdn.net/files/3249/453/cofh_core-1.16.4-1.2.1.jar" "cofh_core.jar"
-cursed_curl "https://media.forgecdn.net/files/3248/150/thermal_foundation-1.16.4-1.2.0.jar" "thermal_foundation.jar"
-cursed_curl "https://media.forgecdn.net/files/3247/0/thermal_expansion-1.16.4-1.2.0.jar" "thermal_expansion.jar"
-cursed_curl "https://media.forgecdn.net/files/3247/2/thermal_innovation-1.16.4-1.2.0.jar" "thermal_innovation.jar"
-cursed_curl "https://media.forgecdn.net/files/3246/999/thermal_cultivation-1.16.4-1.2.0.jar" "thermal_cultivation.jar"
-cursed_curl "https://media.forgecdn.net/files/3247/3/thermal_locomotion-1.16.4-1.2.0.jar" "thermal_locomotion.jar"
-cursed_curl "https://media.forgecdn.net/files/3246/995/archers_paradox-1.16.4-1.2.0.jar" "archers_paradox.jar"
-cursed_curl "https://media.forgecdn.net/files/3246/996/ensorcellation-1.16.4-1.2.0.jar" "ensorcellation.jar"
-cursed_curl "https://media.forgecdn.net/files/3204/37/Patchouli-1.16.4-50.jar" "Patchouli.jar"
-cursed_curl "https://media.forgecdn.net/files/3157/997/theoneprobe-1.16-3.0.7.jar" "theoneprobe.jar"
-cursed_curl "https://media.forgecdn.net/files/3196/167/refinedstorage-1.9.12.jar" "refinedstorage.jar"
-cursed_curl "https://media.forgecdn.net/files/3065/694/refinedstorageaddons-0.7.2.jar" "refinedstorageaddons.jar"
-cursed_curl "https://media.forgecdn.net/files/3113/506/refinedpipes-0.5.jar" "refinedpipes.jar"
-cursed_curl "https://media.forgecdn.net/files/3065/697/rangedpumps-0.8.2.jar" "rangedpumps.jar"
-cursed_curl "https://media.forgecdn.net/files/3236/10/BiomesOPlenty-1.16.4-13.0.0.432-universal.jar" "BiomesOPlenty.jar"
-cursed_curl "https://media.forgecdn.net/files/3288/486/minecolonies-0.14.118-BETA-universal.jar" "minecolonies.jar"
-cursed_curl "https://media.forgecdn.net/files/3280/126/structurize-0.13.166-ALPHA-universal.jar" "structurize.jar"
-cursed_curl "https://media.forgecdn.net/files/3245/79/jei-1.16.5-7.6.1.75.jar" "jei-1.16.5-7.6.1.75.jar"
-echo "\n ... done"
+function cursed_curl () {
 
-echo "Installing new Forge ..."
+	curl --parallel --compressed $DOWNLOAD
+}
+
+
+echo
+echo -e "${h1}cloudTank >>  Updating minecraft${end}"
+echo
+echo
+echo -e "${h2}Cleaning up mods folder ...${end}"
+echo
+mkdir -p $HOME/.minecraft/mods
+cd $HOME/.minecraft/mods
+rm -r *
+echo -e "${text}    ... done${end}"
+echo
+
+
+DOWNLOAD=""
+
+echo
+echo -e "${h2}Downloading new mods ...${text}"
+echo
+download "https://media.forgecdn.net/files/3407/19/cofh_core-1.16.5-1.3.1.jar"
+download "https://media.forgecdn.net/files/3412/300/thermal_foundation-1.16.5-1.3.2.jar"
+download "https://media.forgecdn.net/files/3404/884/thermal_expansion-1.16.5-1.3.0.jar"
+download "https://media.forgecdn.net/files/3404/886/thermal_innovation-1.16.5-1.3.0.jar"
+download "https://media.forgecdn.net/files/3404/883/thermal_cultivation-1.16.5-1.3.0.jar"
+download "https://media.forgecdn.net/files/3404/887/thermal_locomotion-1.16.5-1.3.0.jar"
+download "https://media.forgecdn.net/files/3407/20/archers_paradox-1.16.5-1.3.1.jar"
+download "https://media.forgecdn.net/files/3407/21/ensorcellation-1.16.5-1.3.1.jar"
+download "https://media.forgecdn.net/files/3374/63/Patchouli-1.16.4-53.1.jar"
+download "https://media.forgecdn.net/files/3319/255/theoneprobe-1.16-3.1.4.jar"
+download "https://media.forgecdn.net/files/3400/575/refinedstorage-1.9.15.jar"
+download "https://media.forgecdn.net/files/3400/591/refinedstorageaddons-0.7.3.jar"
+download "https://media.forgecdn.net/files/3113/506/refinedpipes-0.5.jar"
+download "https://media.forgecdn.net/files/3065/697/rangedpumps-0.8.2.jar"
+download "https://media.forgecdn.net/files/3360/574/BiomesOPlenty-1.16.5-13.1.0.477-universal.jar"
+download "https://media.forgecdn.net/files/3442/610/minecolonies-0.14.353-BETA-universal.jar"
+download "https://media.forgecdn.net/files/3434/503/structurize-0.13.210-ALPHA-universal.jar"
+download "https://media.forgecdn.net/files/3438/494/jei-1.16.5-7.7.1.121.jar"
+cursed_curl
+echo -e $end
+
+echo
+echo -e "${h2}Downloading Optifine ...${text}"
+echo
+curl -o optifine.jar https://optifine.net/$(curl --silent https://optifine.net/adloadx?f=OptiFine_1.16.5_HD_U_G8.jar | grep .jar | grep '>Download<' | cut -d"'" -f2)
+echo -e $end
+
+echo
+echo -e "${h2}Downloading Forge ...${text}"
+echo
 cd $HOME/.minecraft
 rm forge*.jar
-cursed_curl "https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.1.0/forge-1.16.5-36.1.0-installer.jar" "forge-installer.jar"
-java -jar forge-installer.jar
-echo "... done"
+curl -O https://maven.minecraftforge.net/net/minecraftforge/forge/1.16.5-36.1.0/forge-1.16.5-36.1.0-installer.jar
 
-echo ""
-echo "Now you have to download optifine. I will open the downloadpage for you..."
-echo "Click [+Preview versions] and download"
-echo ""
-firefox https://optifine.net/downloads 2>&1 1>/dev/null &
+echo
+echo -e "${h2}Updating Forge ...${text}"
+echo
+java -jar forge-1.16.5-36.1.0-installer.jar > /dev/null
+echo -e $end
 
-echo "Waiting for downloaded file ..."
-while [ ! -f $HOME/Downloads/*OptiFine*.jar ]
-do
-    sleep 5
-done
-echo "Found file! Thanks for your help!"
-cp $(find $HOME/Downloads -name '*OptiFine*.jar') $HOME/.minecraft/mods/optifine.jar
-
-echo "Done! You can start to play now, enjoy!"
+echo
+echo -e "${h1}You can start gaming now, enjoy!${end}"
