@@ -1,7 +1,0 @@
-X-Repolib-Name: Ubuntu Jammy libssl3 patch
-Enabled: yes
-Types: deb deb-src
-URIs: http://us.archive.ubuntu.com/ubuntu/
-Suites: jammy
-Components: main restricted universe multiverse
-X-Repolib-Default-Mirror: http://us.archive.ubuntu.com/ubuntu/

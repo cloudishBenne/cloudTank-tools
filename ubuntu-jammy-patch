@@ -1,3 +1,0 @@
-Package: *
-Pin: release v=22.04,o=Ubuntu,a=jammy,n=jammy,l=Ubuntu
-Pin-Priority: 1
