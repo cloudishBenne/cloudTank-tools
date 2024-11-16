@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Kill any existing session named 'temp' to avoid conflicts
+tmux kill-session -t temp 2>/dev/null
+
+# Start a new detached tmux session named 'temp' with a 'shell' window
+tmux -2 new-session -d -s temp -n shell
+
+# Enable mouse support in the 'temp' session
+tmux set-option -t temp -g mouse on
+
+# Create the 'messages' window with the first message in red and run 'sudo i7z'
+tmux new-window -t temp: -n messages "bash -c 'echo -e \"\033[31m1. Starting i7z for VID and turbo states/multiplier view.\033[0m\"; sudo i7z'"
+
+# Select the 'messages' window to set up the pane layout
+tmux select-window -t temp:messages
+
+# Create a temporary script file for the right pane command
+RIGHT_PANE_SCRIPT=$(mktemp /tmp/right_pane_script.XXXXXX)
+
+cat > "$RIGHT_PANE_SCRIPT" << 'EOF'
+#!/bin/bash
+echo -e "\033[31m3. Run the stress tests.\033[0m"
+METHODS=("int64" "int64float")
+for METHOD in "${METHODS[@]}"; do
+    read -p "Press Enter to start test..."
+    date +%T
+    echo -e "\033[1;32mStarting test with method: $METHOD\033[0m"
+    tmux send-keys -t temp:messages.1 "powerstat -R 0.5 1200" C-m
+    stress-ng --cpu 12 --cpu-method $METHOD --timeout 10m --metrics-brief
+done
+echo -e "\033[1;32mAll tests completed.\033[0m"
+read -p "Press Enter to exit..."
+tmux kill-session -t temp
+EOF
+
+chmod +x "$RIGHT_PANE_SCRIPT"
+
+# Split the initial pane horizontally to create the right pane and run the script
+tmux split-window -h -t temp:messages.0 "$RIGHT_PANE_SCRIPT"
+
+# Split the left pane vertically to create the bottom-left pane and run 'sudo -s --preserve-env'
+tmux split-window -v -t temp:messages.0 "bash -c 'echo -e \"\033[31m2. Starting root shell for powerstat runs.\033[0m\"; sudo -s --preserve-env'"
+
+# Ensure the top-left pane is selected before attaching
+tmux select-pane -t temp:messages.0
+
+# Attach to the tmux session, starting in the 'messages' window and focusing on the top-left pane
+tmux attach-session -t temp
+
+# Clean up the temporary script file after the session ends
+rm "$RIGHT_PANE_SCRIPT"
+
